@@ -21,4 +21,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <!--Button: Login-->
+    <Button
+        android:id="@+id/login_btn"
+        android:text="Login"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        style="@style/TextAppearance.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>
