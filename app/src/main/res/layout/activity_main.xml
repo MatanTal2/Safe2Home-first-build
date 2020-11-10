@@ -19,7 +19,8 @@
         android:text="Register"
         style="@style/TextAppearance.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@id/login_btn"/>
 
     <!--Button: Login-->
     <Button
@@ -30,5 +31,6 @@
         style="@style/TextAppearance.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 
 </RelativeLayout>
