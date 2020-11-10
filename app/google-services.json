@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "436474514492",
+    "firebase_url": "https://safe2home-cfb8f.firebaseio.com",
+    "project_id": "safe2home-cfb8f",
+    "storage_bucket": "safe2home-cfb8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436474514492:android:f535cd8a58da9905b54739",
+        "android_client_info": {
+          "package_name": "com.example.safe2home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436474514492-tasb2n1u9noiqq09cv4218ap483ccr57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDin7Cw7_9dC-BTybx-zr4B2FV0ktFdOV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436474514492-tasb2n1u9noiqq09cv4218ap483ccr57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
