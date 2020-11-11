@@ -36,12 +36,12 @@
     <!--EditView: Input Password-->
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordTIL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:id="@+id/passwordTIL"
-        android:layout_below="@id/passwordTIL"
+        android:layout_below="@id/emailTIL"
         app:textInputLayoutFocusedRectEnabled="true">
         <EditText
             android:id="@+id/passwordET"
@@ -53,4 +53,14 @@
     </com.google.android.material.textfield.TextInputEditText>
 
     <!--Button: Register User-->
+    <Button
+        android:id="@+id/registerBtn"
+        android:text="Register"
+        android:layout_below="@id/passwordTIL"
+        android:layout_centerHorizontal="true"
+
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 </RelativeLayout>
