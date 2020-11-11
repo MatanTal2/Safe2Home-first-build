@@ -1,6 +1,8 @@
 package com.example.safe2home;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     // Declare an instance of FirebaseAuth
     private FirebaseAuth mAuth;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +92,9 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, dismiss dialog and start Register Activity
                             progressDialog.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
-
+                            Toast.makeText(RegisterActivity.this,"Register...\n" + user.getEmail(),Toast.LENGTH_SHORT);
+                            startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
