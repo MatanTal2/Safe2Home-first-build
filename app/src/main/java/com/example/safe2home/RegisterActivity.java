@@ -9,20 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private static final int passwordlength = 6;
+    private static final int password_length = 6;
     //views
     EditText mEmailET, mPasswordET;
     Button mRegisterBtn;
@@ -68,9 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
                 mEmailET.setError("Invalid Email");
                 mEmailET.setFocusable(true);
             } else if (password.length() < 6) {
-                // TODO make the password more secure.(letetrs uppercase smallercase digit and signs)
+                // TODO make the password more secure.(letters uppercase smaller case digit and signs)
                 // set error and focus to password editText
-                mPasswordET.setError(String.format("Password length at least %d characters", passwordlength));
+                mPasswordET.setError(String.format("Password length at least %d characters", password_length));
             } else {
                 registerUser(email, password);  // register the user
             }
@@ -80,35 +75,31 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ShowToast")
     private void registerUser(String email, String password) {
         // email and password pattern is valid, show progress dialog  and start registering user
         progressDialog.show();
 
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, dismiss dialog and start Register Activity
-                            progressDialog.dismiss();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(RegisterActivity.this,"Register...\n" + user.getEmail(),Toast.LENGTH_SHORT);
-                            startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
-                            finish();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            progressDialog.dismiss();
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, dismiss dialog and start Register Activity
+                        progressDialog.dismiss();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        assert user != null;
+                        Toast.makeText(RegisterActivity.this, "Register...\n" + user.getEmail(), Toast.LENGTH_SHORT);
+                        startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+                        finish();
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        progressDialog.dismiss();
+                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //error, dismiss progress dialog and get and show the error message
-                progressDialog.dismiss();
-                Toast.makeText(RegisterActivity.this,""+e.getMessage() ,Toast.LENGTH_SHORT).show();
-            }
+                }).addOnFailureListener(e -> {
+            //error, dismiss progress dialog and get and show the error message
+            progressDialog.dismiss();
+            Toast.makeText(RegisterActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
 
 
