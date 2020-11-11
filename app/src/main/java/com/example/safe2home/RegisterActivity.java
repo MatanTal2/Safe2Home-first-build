@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         //ActionBar and it's title
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setTitle("Create Account");
         //enable back button
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -28,7 +30,15 @@ public class RegisterActivity extends AppCompatActivity {
         //init
         mEmailET = findViewById(R.id.emailET);
         mPasswordET = findViewById(R.id.passwordET);
-        mRegisterBtn = findViewById(R.id.register_btn);
+        mRegisterBtn = findViewById(R.id.registerBtn);
+
+        //handle register btn click
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO
+            }
+        });
 
 
     }
