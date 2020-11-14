@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         else
         //the user is not sign in, go to main Activity
         {
-            startActivity(new Intent(ProfileActivity.this, MainActivity.class);
+            startActivity(new Intent(ProfileActivity.this, MainActivity.class));
             finish();
         }
     }

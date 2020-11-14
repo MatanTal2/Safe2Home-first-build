@@ -20,4 +20,9 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();    //go previous Activity
+        return super.onSupportNavigateUp();
+    }
 }
