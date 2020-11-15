@@ -14,9 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -107,12 +111,15 @@ public class LoginActivity extends AppCompatActivity {
         linearLayout.addView(emailEt);
         linearLayout.setPadding(10,10,10,10);
 
+        builder.setView(linearLayout);
+
         //button recover
         builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //input email
                 String email = mEmailEt.getText().toString().trim();
+                beginRecovery(email);
             }
         });
         //button cancel
@@ -124,6 +131,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //show dialog
+        builder.create().show();
+    }
+
+    private void beginRecovery(String email) {
+        mAuth.sendPasswordResetEmail(email).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
     }
 
     private void loginUser(String email, String password) {
