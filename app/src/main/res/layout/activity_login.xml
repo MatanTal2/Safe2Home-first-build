@@ -44,7 +44,7 @@
         android:layout_below="@id/emailTIL"
         app:textInputLayoutFocusedRectEnabled="true">
         <EditText
-            android:id="@+id/passwordET"
+            android:id="@+id/passwordEt"
             android:inputType="textPassword"
             android:hint="@string/hint_password"
             android:layout_width="match_parent"
@@ -68,7 +68,7 @@
 
     <!--TextView: click go to RegisterActivity-->
     <TextView
-        android:id="@+id/have_accountTv"
+        android:id="@+id/not_have_accountTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/not_have_account_register_Tv_prompt"
