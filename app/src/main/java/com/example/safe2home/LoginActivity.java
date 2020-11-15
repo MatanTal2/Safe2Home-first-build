@@ -113,6 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                //dismiss progress dialog
+                progressDialog.dismiss();
                 //error, get and shoe error message
                 Toast.makeText(LoginActivity.this, ""+e.getMessage(),
                         Toast.LENGTH_SHORT).show();
