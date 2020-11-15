@@ -64,13 +64,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!--TextView: show dialog to recover password-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Forgot Password?"
+        android:layout_below="@+id/login_loginBtn"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal" />
+
+
     <!--TextView: click go to RegisterActivity-->
     <TextView
         android:id="@+id/login_not_have_accountTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/not_have_account_register_Tv_prompt"
-        android:layout_below="@id/login_loginBtn"
+        android:layout_alignParentBottom="true"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_marginTop="30dp"
