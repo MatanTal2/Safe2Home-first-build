@@ -46,10 +46,10 @@ public class RegisterActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
 
         //init
-        mEmailET = findViewById(R.id.emailET);
-        mPasswordET = findViewById(R.id.passwordEt);
-        mRegisterBtn = findViewById(R.id.registerBtn);
-        mHaveAccount = findViewById(R.id.have_accountTv);
+        mEmailET = findViewById(R.id.register_emailEt);
+        mPasswordET = findViewById(R.id.register_passwordEt);
+        mRegisterBtn = findViewById(R.id.register_registerBtn);
+        mHaveAccount = findViewById(R.id.register_have_accountTv);
 
 
         // initialize the FirebaseAuth instance.

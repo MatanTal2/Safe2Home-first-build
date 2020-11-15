@@ -1,12 +1,14 @@
 package com.example.safe2home;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (user != null)
         {
             //the user is still signed in, stay here
-            //set eail of logged in user
+            //set email of logged in user
             mProfileTv.setText(user.getEmail());
         }
         else
@@ -71,5 +73,16 @@ public class ProfileActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
     /*handle menu item clicks*/
-    
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //get item id
+        int id = item.getItemId();
+        if (id == R.id.action_logout)
+        {
+            firebaseAuth.signOut();
+            checkUserStatus();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

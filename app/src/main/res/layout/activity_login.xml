@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:id="@+id/emailTIL">
+        android:id="@+id/login_email_TIL">
         <EditText
-            android:id="@+id/emailET"
+            android:id="@+id/login_email_ET"
             android:inputType="textEmailAddress"
             android:hint="@string/hint_Email"
             android:layout_width="match_parent"
@@ -36,15 +36,15 @@
     <!--EditView: Input Password-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTIL"
+        android:id="@+id/login_password_TIL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_below="@id/emailTIL"
+        android:layout_below="@id/login_email_TIL"
         app:textInputLayoutFocusedRectEnabled="true">
         <EditText
-            android:id="@+id/passwordEt"
+            android:id="@+id/login_password_Et"
             android:inputType="textPassword"
             android:hint="@string/hint_password"
             android:layout_width="match_parent"
@@ -54,25 +54,23 @@
 
     <!--Button: Login User-->
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/login_loginBtn"
         android:text="@string/login_btn"
-        android:layout_below="@id/passwordTIL"
+        android:layout_below="@id/login_password_TIL"
         android:layout_centerHorizontal="true"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:drawableLeft="@drawable/ic_register_btn"
+        android:drawableLeft="@drawable/ic_login_btn"
         android:drawablePadding="5dp"
-
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content"/>
 
     <!--TextView: click go to RegisterActivity-->
     <TextView
-        android:id="@+id/not_have_accountTv"
+        android:id="@+id/login_not_have_accountTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/not_have_account_register_Tv_prompt"
-        android:layout_below="@id/registerBtn"
+        android:layout_below="@id/login_loginBtn"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_marginTop="30dp"
