@@ -30,5 +30,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
+        //handle login button click
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //start Login Activity
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
     }
 }
