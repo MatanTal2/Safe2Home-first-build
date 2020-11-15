@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -13,6 +15,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     // Firebase auth
     FirebaseAuth firebaseAuth;
+
+    //views
+    TextView mProfileTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +29,11 @@ public class ProfileActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setTitle("Profile");
 
-        ///init
+        // initialize the FirebaseAuth instance
         firebaseAuth = FirebaseAuth.getInstance();
+
+        //init views
+        mProfileTv = findViewById(R.id.profileTv);
     }
 
     private void checkUserStatus()
@@ -33,9 +41,10 @@ public class ProfileActivity extends AppCompatActivity {
         //Get current user
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null)
-        //the user is still signed in, stay here
         {
-            //TODO if the user is sign in.
+            //the user is still signed in, stay here
+            //set eail of logged in user
+            mProfileTv.setText(user.getEmail());
         }
         else
         //the user is not sign in, go to main Activity
@@ -51,4 +60,16 @@ public class ProfileActivity extends AppCompatActivity {
         checkUserStatus();
         super.onStart();
     }
+
+    //inflate option menu
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //inflating menu
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    /*handle menu item clicks*/
+    
 }

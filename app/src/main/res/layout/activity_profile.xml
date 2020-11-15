@@ -9,6 +9,7 @@
 
     tools:context=".ProfileActivity">
 
+    <!--Show email of login in user-->
     <TextView
         android:id="@+id/profileTv"
         android:layout_width="wrap_content"
