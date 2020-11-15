@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -80,8 +81,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //not have account click
-        mNotHaveAccountTv.setOnClickListener(view -> startActivity(
-                new Intent(LoginActivity.this, RegisterActivity.class)));
+        mNotHaveAccountTv.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            finish();
+        });
 
         //recover password textView click
         mRecoverPasswordTv.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //init progress dialog
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Logging in...");
+
     }
 
     private void showRecoverPasswordDialog() {
@@ -107,6 +110,12 @@ public class LoginActivity extends AppCompatActivity {
         EditText emailEt = new EditText(this);
         emailEt.setHint("Email");
         emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        /*
+        *   sets the min width of a EditView to fit a text of n 'M' letters
+        * regardless of the actual text extension and text size
+        */
+        emailEt.setMinEms(10);
+
 
         linearLayout.addView(emailEt);
         linearLayout.setPadding(10,10,10,10);
@@ -136,6 +145,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void beginRecovery(String email) {
+        //show progress dialog
+        progressDialog.setMessage("Sending email...");
+        progressDialog.show();
         mAuth.sendPasswordResetEmail(email).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -144,18 +156,29 @@ public class LoginActivity extends AppCompatActivity {
         }).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
+                progressDialog.dismiss();
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(LoginActivity.this, "email sent", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                progressDialog.dismiss();
+                //get and show proper error message
+                Toast.makeText(LoginActivity.this, "" + e.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void loginUser(String email, String password) {
         //show progress dialog
+        progressDialog.setMessage("Logging in...");
         progressDialog.show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
