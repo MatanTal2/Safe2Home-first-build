@@ -5,8 +5,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -21,6 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     //views
     EditText mEmailET, mPasswordET;
     Button mRegisterBtn;
+    TextView mHaveAccount;
 
     //progressbar to disply while registering user
     ProgressDialog progressDialog;
@@ -46,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity {
         mEmailET = findViewById(R.id.emailET);
         mPasswordET = findViewById(R.id.passwordET);
         mRegisterBtn = findViewById(R.id.registerBtn);
+        mHaveAccount = findViewById(R.id.have_accountTv);
+
 
         // initialize the FirebaseAuth instance.
         mAuth = FirebaseAuth.getInstance();
@@ -73,6 +78,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
+        //handle login textView click listener
+        mHaveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
 
     }
 

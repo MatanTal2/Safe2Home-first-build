@@ -40,4 +40,15 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.vectordrawable:vectordrawable:1.1.0"
+
+    /* To be able to animate properties of a VectorDrawable, add the following.  Useful for
+     * illustration purposes or state changes in response to user events
+     */
+    implementation "androidx.vectordrawable:vectordrawable-animated:1.1.0"
+
+    /* To use a seekable alternative for `androidx.vectordrawable:vectordrawable-animated` add the
+     * following
+     */
+    implementation "androidx.vectordrawable:vectordrawable-seekable:1.0.0-alpha02"
 }
