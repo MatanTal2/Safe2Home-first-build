@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             //User is sing in, start LoginActivity
                             startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                            finish();
                         } else {
                             //dismiss progress dialog
                             progressDialog.dismiss();
