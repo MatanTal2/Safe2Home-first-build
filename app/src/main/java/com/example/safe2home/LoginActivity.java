@@ -1,12 +1,16 @@
 package com.example.safe2home;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     //views
-    TextView mNotHaveAccountTv;
+    TextView mNotHaveAccountTv, mRecoverPasswordTv;
     Button mLoginBtn;
     EditText mEmailEt, mPasswordEt;
 
@@ -47,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordEt = findViewById(R.id.login_password_Et);
         mLoginBtn = findViewById(R.id.login_loginBtn);
         mNotHaveAccountTv = findViewById(R.id.login_not_have_accountTv);
+        mRecoverPasswordTv = findViewById(R.id.login_recover_password_Tv);
 
         //initialize the FirebaseAuth instance.
         mAuth = FirebaseAuth.getInstance();
@@ -74,9 +79,51 @@ public class LoginActivity extends AppCompatActivity {
         mNotHaveAccountTv.setOnClickListener(view -> startActivity(
                 new Intent(LoginActivity.this, RegisterActivity.class)));
 
+        //recover password textView click
+        mRecoverPasswordTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRecoverPasswordDialog();
+            }
+        });
+
+
         //init progress dialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Logging in...");
+    }
+
+    private void showRecoverPasswordDialog() {
+        //AlterDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Recover Password");
+        //set layout linear layout
+        LinearLayout linearLayout = new LinearLayout(this);
+        //views to set in the dialog
+        EditText emailEt = new EditText(this);
+        emailEt.setHint("Email");
+        emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+        linearLayout.addView(emailEt);
+        linearLayout.setPadding(10,10,10,10);
+
+        //button recover
+        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //input email
+                String email = mEmailEt.getText().toString().trim();
+            }
+        });
+        //button cancel
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //dismiss dialog
+                dialog.dismiss();
+            }
+        });
+
     }
 
     private void loginUser(String email, String password) {
