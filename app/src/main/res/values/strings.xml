@@ -6,4 +6,8 @@
     <string name="hint_password">Password</string>
     <string name="registerBtn">Register</string>
     <string name="profile_Tv">Profile</string>
+    <string name="register_title">Register</string>
+    <string name="login_title">Login</string>
+    <string name="not_have_account_register_Tv_prompt">Not have account? Register</string>
+    <string name="already_have_account_login_Tv_prompt">Already have account? Login</string>
 </resources>
