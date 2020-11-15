@@ -99,7 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-
+                            //User is sing in, start LoginActivity
+                            startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
                         } else {
                             //dismiss progress dialog
                             progressDialog.dismiss();
