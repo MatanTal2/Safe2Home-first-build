@@ -30,7 +30,8 @@
         android:layout_marginBottom="100dp"
         style="@style/TextAppearance.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_login_btn"/>
 
 
 </RelativeLayout>
