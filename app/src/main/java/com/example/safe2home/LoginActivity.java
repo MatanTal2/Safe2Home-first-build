@@ -30,6 +30,10 @@ public class LoginActivity extends AppCompatActivity {
 
         //init
         mEmailEt = findViewById(R.id.emailEt);
+        mPasswordEt = findViewById(R.id.passwordEt);
+        mLoginBtn = findViewById(R.id.login_btn);
+        mNotHaveAccountTv = findViewById(R.id.not_have_accountTv);
+
 
 
     }
