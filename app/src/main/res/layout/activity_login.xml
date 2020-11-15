@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Forgot Password?"
+        android:text="@string/login_forgot_passwordTv"
         android:layout_below="@+id/login_loginBtn"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal" />
