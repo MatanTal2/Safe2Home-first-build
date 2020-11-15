@@ -52,21 +52,21 @@
             android:autofillHints="Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--Button: Register User-->
+    <!--Button: Login User-->
     <Button
-        android:id="@+id/registerBtn"
-        android:text="@string/registerBtn"
+        android:id="@+id/loginBtn"
+        android:text="@string/login_btn"
         android:layout_below="@id/passwordTIL"
         android:layout_centerHorizontal="true"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:drawableLeft="@drawable/ic_register"
+        android:drawableLeft="@drawable/ic_register_btn"
         android:drawablePadding="5dp"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
 
-    <!--TextView: click go to LoginActivity-->
+    <!--TextView: click go to RegisterActivity-->
     <TextView
         android:id="@+id/have_accountTv"
         android:layout_width="match_parent"
