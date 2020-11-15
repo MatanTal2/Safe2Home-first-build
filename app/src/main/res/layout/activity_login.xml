@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:padding="20dp"
+    tools:context=".RegisterActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--TextView: Label Register-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/register_btn"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <!--EditView: Input Email-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/emailTIL">
+        <EditText
+            android:id="@+id/emailET"
+            android:inputType="textEmailAddress"
+            android:hint="@string/hint_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="Email" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--EditView: Input Password-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/emailTIL"
+        app:textInputLayoutFocusedRectEnabled="true">
+        <EditText
+            android:id="@+id/passwordET"
+            android:inputType="textPassword"
+            android:hint="@string/hint_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="Password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Button: Register User-->
+    <Button
+        android:id="@+id/registerBtn"
+        android:text="@string/registerBtn"
+        android:layout_below="@id/passwordTIL"
+        android:layout_centerHorizontal="true"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:drawableLeft="@drawable/ic_register"
+        android:drawablePadding="5dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <!--TextView: click go to LoginActivity-->
+    <TextView
+        android:id="@+id/have_accountTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Already have account? Login"
+        android:layout_below="@id/registerBtn"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal" />
+
+</RelativeLayout>
