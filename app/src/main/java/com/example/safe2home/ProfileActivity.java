@@ -65,7 +65,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     //inflate option menu
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //inflating menu
