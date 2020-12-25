@@ -8,7 +8,15 @@
     tools:context=".LoginActivity">
 
     <!--TextView: Label Login-->
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/login_title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+    <!--EditView: Input Email-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_email_TIL"
         android:layout_width="match_parent"
@@ -25,6 +33,7 @@
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--Button: Login User-->
     <Button
         android:id="@+id/login_loginBtn"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
@@ -36,6 +45,7 @@
         android:drawablePadding="5dp"
         android:text="@string/login_btn" />
 
+    <!--TextView: show dialog to recover password-->
     <TextView
         android:id="@+id/login_recover_password_Tv"
         android:layout_width="match_parent"
@@ -46,6 +56,7 @@
         android:text="@string/login_forgot_passwordTv"
         android:textAlignment="center" />
 
+    <!--EditView: Input Password-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_password_TIL"
         android:layout_width="match_parent"
@@ -63,6 +74,7 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--TextView: click go to RegisterActivity-->
     <TextView
         android:id="@+id/login_not_have_accountTv"
         android:layout_width="match_parent"
@@ -74,24 +86,5 @@
         android:textAlignment="center"
         android:textColor="@color/black" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/login_title"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="25sp" />
-
-    <!--EditView: Input Email-->
-
-    <!--EditView: Input Password-->
-
-    <!--Button: Login User-->
-
-    <!--TextView: show dialog to recover password-->
-
-
-    <!--TextView: click go to RegisterActivity-->
 
 </RelativeLayout>
