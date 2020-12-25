@@ -2,9 +2,11 @@ package com.example.safe2home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -15,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private static final String TAG = "Profile Activity";
     // Firebase auth
     FirebaseAuth firebaseAuth;
 
@@ -35,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         //init views
-        mProfileTv = findViewById(R.id.profileTv);
+        mProfileTv = findViewById(R.id.profile_Tv);
     }
 
     private void checkUserStatus()
@@ -46,7 +49,9 @@ public class ProfileActivity extends AppCompatActivity {
         {
             //the user is still signed in, stay here
             //set email of logged in user
+            Log.d(TAG, "checkUserStatus: ");
             mProfileTv.setText(user.getEmail());
+            Toast.makeText(this, "Logged as" + user.getEmail(), Toast.LENGTH_SHORT).show();
         }
         else
         //the user is not sign in, go to main Activity

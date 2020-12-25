@@ -11,11 +11,11 @@
 
     <!--Show email of login in user-->
     <TextView
-        android:id="@+id/profileTv"
+        android:id="@+id/profile_Tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_Tv"
-        android:textColor="@color/design_default_color_on_primary"
+
         android:textSize="30sp"/>
 
 </LinearLayout>
