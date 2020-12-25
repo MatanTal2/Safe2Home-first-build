@@ -110,14 +110,14 @@ public class LoginActivity extends AppCompatActivity {
         emailEt.setHint("Email");
         emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         /*
-        *   sets the min width of a EditView to fit a text of n 'M' letters
-        * regardless of the actual text extension and text size
-        */
+         *   sets the min width of a EditView to fit a text of n 'M' letters
+         * regardless of the actual text extension and text size
+         */
         emailEt.setMinEms(10);
 
 
         linearLayout.addView(emailEt);
-        linearLayout.setPadding(10,10,10,10);
+        linearLayout.setPadding(10, 10, 10, 10);
 
         builder.setView(linearLayout);
 
@@ -156,12 +156,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
-                if (task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "email sent", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -170,7 +167,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
                 //get and show proper error message
-                Toast.makeText(LoginActivity.this, "" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -200,12 +197,12 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 }).addOnFailureListener(e -> {
-                    //dismiss progress dialog
-                    progressDialog.dismiss();
-                    //error, get and shoe error message
-                    Toast.makeText(LoginActivity.this, "" + e.getMessage(),
-                            Toast.LENGTH_SHORT).show();
-                });
+            //dismiss progress dialog
+            progressDialog.dismiss();
+            //error, get and shoe error message
+            Toast.makeText(LoginActivity.this, "" + e.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
