@@ -147,17 +147,13 @@ public class LoginActivity extends AppCompatActivity {
         //show progress dialog
         progressDialog.setMessage("Sending email...");
         progressDialog.show();
-        mAuth.sendPasswordResetEmail(email).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
 
-            }
-        }).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "email sent", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
@@ -169,13 +165,14 @@ public class LoginActivity extends AppCompatActivity {
                 //get and show proper error message
                 Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        })
     }
 
     private void loginUser(String email, String password) {
         //show progress dialog
         progressDialog.setMessage("Logging in...");
         progressDialog.show();
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
