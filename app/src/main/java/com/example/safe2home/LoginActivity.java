@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
          *   sets the min width of a EditView to fit a text of n 'M' letters
          * regardless of the actual text extension and text size
          */
-        emailEt.setMinEms(10);
+        emailEt.setMinEms(16);
 
 
         linearLayout.addView(emailEt);
@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
                 //get and show proper error message
                 Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        })
+        });
     }
 
     private void loginUser(String email, String password) {
