@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -26,13 +27,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "Login activity";
     //views
     TextView mNotHaveAccountTv, mRecoverPasswordTv;
     Button mLoginBtn;
     EditText mEmailEt, mPasswordEt;
 
     //Declare an instance of FirebaseAuth
-    private FirebaseAuth mAuth;
+    private FirebaseAuth FirebaseAuth;
 
     //progress dialog
     ProgressDialog progressDialog;
@@ -58,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         mRecoverPasswordTv = findViewById(R.id.login_recover_password_Tv);
 
         //initialize the FirebaseAuth instance.
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth = FirebaseAuth.getInstance();
 
         //login button click
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -106,17 +108,17 @@ public class LoginActivity extends AppCompatActivity {
         //set layout linear layout
         LinearLayout linearLayout = new LinearLayout(this);
         //views to set in the dialog
-        EditText emailEt = new EditText(this);
-        emailEt.setHint("Email");
-        emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        EditText recoverDialogEmailEt = new EditText(this);
+        recoverDialogEmailEt.setHint("Email");
+        recoverDialogEmailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         /*
          *   sets the min width of a EditView to fit a text of n 'M' letters
          * regardless of the actual text extension and text size
          */
-        emailEt.setMinEms(16);
+        recoverDialogEmailEt.setMinEms(16);
 
 
-        linearLayout.addView(emailEt);
+        linearLayout.addView(recoverDialogEmailEt);
         linearLayout.setPadding(10, 10, 10, 10);
 
         builder.setView(linearLayout);
@@ -126,8 +128,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //input email
-                String email = mEmailEt.getText().toString().trim();
-                beginRecovery(email);
+                String emailAddress = recoverDialogEmailEt.getText().toString().trim();
+                Log.d(TAG, "onClick: Recover password send an email to " + emailAddress);
+                beginRecovery(emailAddress);
             }
         });
         //button cancel
@@ -143,29 +146,43 @@ public class LoginActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    private void beginRecovery(String email) {
+    private void beginRecovery(String emailAddress) {
         //show progress dialog
         progressDialog.setMessage("Sending email...");
         progressDialog.show();
 
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                progressDialog.dismiss();
-                if (task.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                progressDialog.dismiss();
-                //get and show proper error message
-                Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        Log.d(TAG, "beginRecovery: email adrress is " + emailAddress);
+        auth.sendPasswordResetEmail(emailAddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent.");
+                        }
+                    }
+                });
+
+
+
+//        FirebaseAuth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                progressDialog.dismiss();
+//                if (task.isSuccessful()) {
+//                    Toast.makeText(LoginActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                progressDialog.dismiss();
+//                //get and show proper error message
+//                Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void loginUser(String email, String password) {
@@ -173,14 +190,14 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Logging in...");
         progressDialog.show();
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        FirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         //dismiss progress dialog
                         progressDialog.dismiss();
                         // Sign in success, update UI with the signed-in user's information
 
-                        FirebaseUser user = mAuth.getCurrentUser();
+                        FirebaseUser user = FirebaseAuth.getCurrentUser();
                         //User is sing in, start LoginActivity
                         startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
                         finish();
