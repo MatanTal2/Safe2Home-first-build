@@ -171,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
 //                progressDialog.dismiss();
 //                if (task.isSuccessful()) {
 //                    Toast.makeText(LoginActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
+//                    Log.d(TAG, "Email sent.");
 //                } else {
 //                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
 //                }

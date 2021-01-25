@@ -38,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         //init views
-        mProfileTv = findViewById(R.id.profile_Tv);
+
     }
 
     private void checkUserStatus()
@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
             //the user is still signed in, stay here
             //set email of logged in user
             Log.d(TAG, "checkUserStatus: ");
-            mProfileTv.setText(user.getEmail());
+            //mProfileTv.setText(user.getEmail());
             Toast.makeText(this, "Logged as" + user.getEmail(), Toast.LENGTH_SHORT).show();
         }
         else
@@ -79,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //inflating menu
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.new_item_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
     /*handle menu item clicks*/

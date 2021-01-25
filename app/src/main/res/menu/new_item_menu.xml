@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--change the style - popup menu item need to be below actionbar-->
+
+
+    <item
+        android:id="@+id/share_item"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="settings"
+        />
+
+    <item
+        android:id="@+id/action_help"
+        android:title="help" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/menu_logout_title" />
+
+</menu>
